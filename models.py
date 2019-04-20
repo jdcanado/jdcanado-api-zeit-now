@@ -20,7 +20,6 @@ mapper(BlogPost, blog_posts)
 
 class Caminhao(object):
     query = db_session.query_property()
-    add = db_session.add(object)
     def __init__(self, id=None, tipo=None):
         self.id = id
         self.tipo = tipo
