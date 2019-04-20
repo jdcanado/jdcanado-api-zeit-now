@@ -3,7 +3,8 @@ from flask import Flask
 from flask_restplus import Resource, Api, fields
 from werkzeug.contrib.fixers import ProxyFix
 from database import db_session
-from models import BlogPost, Caminhao
+from models import BlogPost
+from models import Caminhao
 
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
@@ -25,6 +26,7 @@ class BlogPosts(Resource):
         'title': fields.String,
         'post': fields.String,
     })
+
     @api.marshal_with(model, envelope='resource')
     def get(self, **kwargs):
         return BlogPost.query.all()
@@ -35,10 +37,17 @@ class Caminhao(Resource):
         'id': fields.Integer,
         'tipo': fields.String,
     })
+
     @api.marshal_with(model, envelope='resource')
     def get(self, **kwargs):
-        return Caminhao.query.all()   
-          
+        return Caminhao.query.all()
+    
+    @api.expect(model)      
+    def post(self):
+        caminhao = Caminhao(id = self.id, tipo = self.tipo)            
+        db_session.add(caminhao)
+        db_session.commit()  
+
 @app.teardown_appcontext
 def shutdown_session(exception=None):
     db_session.remove()
