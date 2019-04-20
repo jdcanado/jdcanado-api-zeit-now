@@ -20,8 +20,7 @@ databasename = "xxx"
 host = "xxx.eu-west-1.rds.amazonaws.com"
 password = "xxx"
 
-
-engine = create_engine('postgres://{}:{}@{}/{}').format(username, password, host, databasename), convert_unicode=True)
+engine = create_engine('postgres://{}:{}@{}/{}'.format(username, password, host, databasename), convert_unicode=True)
 metadata = MetaData()
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
