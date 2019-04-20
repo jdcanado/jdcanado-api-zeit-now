@@ -27,7 +27,7 @@ class Caminhao(object):
     
     def add(self):
         db_session.add(self)
-        db_session.commit
+        db_session.commit()
         
 caminhao = Table('caminhao', metadata,
     Column('id', Integer, primary_key=True),
