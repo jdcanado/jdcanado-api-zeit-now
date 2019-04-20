@@ -44,6 +44,9 @@ class Caminhao(Resource):
     def get(self, **kwargs):
         return Caminhao.query.all()
 
+    def post(self)
+        return Caminhao.add(self)
+
 @app.teardown_appcontext
 def shutdown_session(exception=None):
     db_session.remove()
