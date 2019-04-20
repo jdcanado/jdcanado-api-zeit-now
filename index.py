@@ -4,7 +4,6 @@ from flask_restplus import Resource, Api, fields
 from werkzeug.contrib.fixers import ProxyFix
 from database import db_session
 from models import BlogPost
-from flask_sqlalchemy import SQLAlchemy 
 
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
@@ -13,9 +12,6 @@ api = Api(app,
           title='Our sample API',
           description='This is our sample API'
 )
-
-# Init db
-db = SQLAlchemy(app)
 
 @api.route('/hello_world')
 class HelloWorld(Resource):
@@ -45,8 +41,8 @@ class Caminhao(Resource):
 
     @api.marshal_with(model, envelope='resource')
     def post(self, **kwargs):
-        db.session.add(self)
-        db.session.commit  
+        db_session.add(self)
+        db_session.commit  
         return self
     
 @app.teardown_appcontext
