@@ -42,7 +42,7 @@ class Caminhao(Resource):
     @api.marshal_with(model, envelope='resource')
     def post(self, **kwargs):
         db_session.add(self)
-        db_session.commit  
+        db_session.commit()  
         return self
     
 @app.teardown_appcontext
