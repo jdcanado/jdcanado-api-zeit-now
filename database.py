@@ -12,7 +12,7 @@ except:
 
 username = "cfqvhzyn"
 databasename = "cfqvhzyn"
-host = "otto.db.elephantsql.com"
+host = "otto.db.elephantsql.com:5432"
 password = "X20fx0vIQGCM4-tMeRkQRY1LoZ4RDkWw"
 
 #username = "xxx"
