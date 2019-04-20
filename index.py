@@ -40,6 +40,7 @@ class Caminhao(Resource):
     def get(self, **kwargs):
         return Caminhao.query.all()
 
+    @api.expect(model)
     def post(self):
         caminhao = Caminhao('id' = self.id, 'tipo' = self.tipo)            
         print(caminhao.id)
