@@ -26,7 +26,7 @@ class Caminhao(object):
         
 caminhao = Table('caminhao', metadata,
     Column('id', Integer, primary_key=True),
-    Column('caminhao', Text)
+    Column('tipo', Text)
 )
 
 mapper(Caminhao, caminhao)
