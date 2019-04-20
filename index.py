@@ -29,6 +29,15 @@ class BlogPosts(Resource):
     def get(self, **kwargs):
         return BlogPost.query.all()
 
+@api.route('/caminhao')
+class Caminhao(Resource):
+    model = api.model('Caminhao', {
+        'id': fields.Integer,
+        'tipo': fields.String
+    @api.marshal_with(model, envelope='resource')
+    def get(self, **kwargs):
+        return Caminhao.query.all()
+
 @app.teardown_appcontext
 def shutdown_session(exception=None):
     db_session.remove()
