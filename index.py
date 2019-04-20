@@ -13,6 +13,9 @@ api = Api(app,
           description='This is our sample API'
 )
 
+# Init db
+db = SQLAlchemy(app)
+
 @api.route('/hello_world')
 class HelloWorld(Resource):
     def get(self):
@@ -41,7 +44,9 @@ class Caminhao(Resource):
 
     @api.marshal_with(model, envelope='resource')
     def post(self, **kwargs):
-        return db_session.add(self)
+        db.session.add(self)
+        db.session.commit  
+        return self
     
 @app.teardown_appcontext
 def shutdown_session(exception=None):
