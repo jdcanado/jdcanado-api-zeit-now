@@ -40,8 +40,10 @@ class Caminhao(Resource):
         return Caminhao.query.all()
 
     @api.marshal_with(model, envelope='resource')
-    def post(self, **kwargs):        
-        return Caminhao.add(self)
+    def post(self, **kwargs):
+        caminhao.id = self.id
+        caminhao.tipo = self.tipo
+        return Caminhao.add(caminhao)
     
 @app.teardown_appcontext
 def shutdown_session(exception=None):
