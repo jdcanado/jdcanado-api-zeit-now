@@ -25,7 +25,7 @@ class Caminhao(object):
         self.id = id
         self.tipo = tipo
         
-    add(self)
+    def add(self):
         db_session.add(self)
         db_session.commit()
         
