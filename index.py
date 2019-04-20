@@ -40,7 +40,7 @@ class Caminhao(Resource):
         return Caminhao.query.all()
     
     def post(self):
-        return Caminhao.add(model), 201
+        return Caminhao.add(self)
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):
