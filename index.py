@@ -38,16 +38,7 @@ class Caminhao(Resource):
     })
     @api.marshal_with(model, envelope='resource')
     def get(self, **kwargs):
-        return Caminhao.query.all()
-
-    @api.expect(model)
-    def post(self):
-        caminhao = Caminhao('id' = self.id, 'tipo' = self.tipo)            
-        print(caminhao.id)
-        print(caminhao.tipo)
-        db_session.add(caminhao)
-        db_session.commit()
-        return caminhao
+        return Caminhao.query.all()   
           
 @app.teardown_appcontext
 def shutdown_session(exception=None):
