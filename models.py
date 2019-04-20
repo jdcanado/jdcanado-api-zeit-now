@@ -23,7 +23,11 @@ class Caminhao(object):
     
     def __init__(self, id=None, tipo=None):
         self.id = id
-        self.tipo = tipo           
+        self.tipo = tipo
+        
+    add(self)
+        db_session.add(self)
+        db_session.commit()
         
 caminhao = Table('caminhao', metadata,
     Column('id', Integer, primary_key=True),
