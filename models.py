@@ -20,9 +20,13 @@ mapper(BlogPost, blog_posts)
 
 class Caminhao(object):
     query = db_session.query_property()
+    
     def __init__(self, id=None, tipo=None):
         self.id = id
         self.tipo = tipo
+        
+    def add(self)
+        db_session.add(self)        
         
 caminhao = Table('caminhao', metadata,
     Column('id', Integer, primary_key=True),
