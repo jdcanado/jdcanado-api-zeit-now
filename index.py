@@ -33,7 +33,8 @@ class BlogPosts(Resource):
 class Caminhao(Resource):
     model = api.model('Caminhao', {
         'id': fields.Integer,
-        'tipo': fields.String
+        'tipo': fields.String,
+    })
     @api.marshal_with(model, envelope='resource')
     def get(self, **kwargs):
         return Caminhao.query.all()
