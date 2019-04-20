@@ -41,7 +41,9 @@ class Caminhao(Resource):
         return Caminhao.query.all()
     @api.expect(model)      
     def post(self):
-        db_session.add(self)
+        caminhao.id = self.id
+        caminhao.tipo = self.tipo            
+        db_session.add(caminhao)
         db_session.commit()  
 
 @app.teardown_appcontext
