@@ -14,10 +14,6 @@ api = Api(app,
           description='This is our sample API'
 )
 
-db = SQLAlchemy(app)
-# Init ma
-ma = Marshmallow(app)
-
 @api.route('/hello_world')
 class HelloWorld(Resource):
     def get(self):
