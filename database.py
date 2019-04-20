@@ -10,10 +10,16 @@ try:
 except:
     import psycopg2
 
-username = "cfqvhzyn"
-databasename = "cfqvhzyn"
-host = "otto.db.elephantsql.com"
-password = "X20fx0vIQGCM4-tMeRkQRY1LoZ4RDkWw"
+#username = "cfqvhzyn"
+#databasename = "cfqvhzyn"
+#host = "otto.db.elephantsql.com"
+#password = "X20fx0vIQGCM4-tMeRkQRY1LoZ4RDkWw"
+
+username = "xxx"
+databasename = "xxx"
+host = "xxx.eu-west-1.rds.amazonaws.com"
+password = "xxx"
+
 
 engine = create_engine('postgres://{}:{}@{}/{}').format(username, password, host, databasename), convert_unicode=True)
 metadata = MetaData()
